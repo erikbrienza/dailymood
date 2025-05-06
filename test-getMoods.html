@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visualizza Umori</title>
+</head>
+<body>
+    <h2>Storico Umori</h2>
+    <form id="getMoodsForm">
+        <input type="number" id="user_id" placeholder="ID utente" required><br><br>
+        <button type="submit">Recupera Umori</button>
+    </form>
+
+    <ul id="moodsList"></ul>
+
+    <script>
+        document.getElementById('getMoodsForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const user_id = document.getElementById('user_id').value;
+
+            fetch('http://localhost:8888/dailymood/backend/getMoods.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ user_id })
+            })
+            .then(response => response.json())
+            .then(data => {
+                const list = document.getElementById('moodsList');
+                list.innerHTML = '';
+                data.forEach(item => {
+                    const li = document.createElement('li');
+                    li.textContent = `${item.date} - ${item.mood}`;
+                    list.appendChild(li);
+                });
+            })
+            .catch(error => {
+                document.getElementById('moodsList').innerText = 'Errore: ' + error;
+            });
+        });
+    </script>
+</body>
+</html>

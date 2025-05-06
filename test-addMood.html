@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Aggiungi Umore</title>
+</head>
+<body>
+    <h2>Aggiungi umore del giorno</h2>
+    <form id="moodForm">
+        <input type="number" id="user_id" placeholder="ID utente" required><br><br>
+
+        <select id="mood" required>
+            <option value="">Seleziona umore</option>
+            <option value="felice">😊 Felice</option>
+            <option value="neutro">😐 Neutro</option>
+            <option value="triste">😢 Triste</option>
+        </select><br><br>
+
+        <button type="submit">Salva Umore</button>
+    </form>
+
+    <p id="result"></p>
+
+    <script>
+        document.getElementById('moodForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const user_id = document.getElementById('user_id').value;
+            const mood = document.getElementById('mood').value;
+
+            fetch('http://localhost:8888/dailymood/backend/addMood.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ user_id, mood })
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('result').innerText = data.message;
+            })
+            .catch(error => {
+                document.getElementById('result').innerText = 'Errore: ' + error;
+            });
+        });
+    </script>
+</body>
+</html>

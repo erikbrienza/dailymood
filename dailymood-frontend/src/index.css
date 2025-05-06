@@ -1,0 +1,182 @@
+:root {
+  --bg-color: #f4f6f8;
+  --text-color: #1e1e2f;
+  --primary-color: #009fb7;
+  --mood-felice: #26a67c;
+  --mood-neutro: #9e9e9e;
+  --mood-triste: #fe4a49;
+}
+
+body.dark {
+  --bg-color: #121212;
+  --text-color: #f4f6f8;
+  --primary-color: #00c8e0;
+  --mood-felice: #2ecc71;
+  --mood-neutro: #7f8c8d;
+  --mood-triste: #e74c3c;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  margin: 0;
+  padding: 0;
+}
+
+.main-content,
+.dashboard-content {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+h1 {
+  font-size: 2.5em;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+h2,
+h3 {
+  font-size: 1.8em;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+a {
+  color: var(--primary-color);
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+input,
+select {
+  width: 100%;
+  font-size: 1em;
+  padding: 12px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+button {
+    background-color: var(--primary-color);
+    color: white;
+  border: none;
+  padding: 12px 25px;
+  font-size: 1em;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #007a8a;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin-top: 20px;
+}
+
+.mood-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  border-radius: 8px;
+  margin-bottom: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  color: white;
+  font-size: 1.1em;
+  box-sizing: border-box;
+}
+
+.mood-felice {
+  background-color: #26a67c;
+}
+
+.mood-neutro {
+  background-color: #9e9e9e;
+}
+
+.mood-triste {
+  background-color: #fe4a49;
+}
+
+@keyframes fadeInSlide {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.mood-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  border-radius: 8px;
+  margin-bottom: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  color: white;
+  font-size: 1.1em;
+  box-sizing: border-box;
+  animation: fadeInSlide 0.5s ease forwards;
+  transition: transform 0.2s ease;
+}
+
+.mood-card:hover {
+  transform: scale(1.02);
+}
+
+.mood-felice {
+  background-color: #26a67c;
+}
+
+.mood-neutro {
+  background-color: #9e9e9e;
+}
+
+.mood-triste {
+  background-color: #fe4a49;
+}
+
+.badge-today {
+  background-color: rgba(255, 255, 255, 0.2);
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-size: 0.8em;
+  margin-left: 10px;
+}
+
+@media (max-width: 600px) {
+
+  .main-content,
+  .dashboard-content {
+    padding: 15px;
+  }
+
+  h1 {
+    font-size: 2em;
+  }
+
+  h2,
+  h3 {
+    font-size: 1.5em;
+  }
+
+  button {
+    width: 100%;
+  }
+}
