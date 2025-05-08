@@ -22,7 +22,7 @@ function Dashboard() {
   const handleSaveMood = (e) => {
     e.preventDefault();
 
-    fetch("https://erikb79.sg-host.com/backend/register.php", {
+    fetch("https://erikb79.sg-host.com/backend/addMood.php", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ user_id, mood }),
@@ -36,7 +36,7 @@ function Dashboard() {
   };
 
   const fetchMoods = () => {
-    fetch("http://localhost:8888/dailymood/backend/getMoods.php", {
+    fetch("https://erikb79.sg-host.com/backend/getMoods.php", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ user_id }),
