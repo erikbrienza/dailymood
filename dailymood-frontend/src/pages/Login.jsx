@@ -11,7 +11,7 @@ function Login() {
   const handleLogin = (e) => {
     e.preventDefault();
 
-    fetch("https://erikb79.sg-host.com/backend/register.php", {
+    fetch("https://erikb79.sg-host.com/backend/login.php", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email, password }),
