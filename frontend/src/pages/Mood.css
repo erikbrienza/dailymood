@@ -1,0 +1,49 @@
+.mood-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(to top right, #d1f2eb, #fef9e7);
+    padding: 2rem;
+}
+
+.mood-box {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.1);
+    max-width: 500px;
+    width: 100%;
+    text-align: center;
+}
+
+.mood-box h2 {
+    margin-bottom: 1.5rem;
+    color: #025669;
+}
+
+.mood-box input {
+    width: 100%;
+    padding: 0.8rem;
+    margin-bottom: 1rem;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+
+.mood-box button {
+    width: 100%;
+    padding: 0.8rem;
+    background-color: #025669;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.mood-box p {
+    margin-top: 1rem;
+    color: #333;
+}

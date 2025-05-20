@@ -1,0 +1,31 @@
+.header {
+    width: 100%;
+    padding: 1rem 2rem;
+    background-color: #025669;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo a {
+    text-decoration: none;
+    color: white;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.nav {
+    display: flex;
+    gap: 1rem;
+}
+
+.nav button {
+    padding: 0.5rem 1rem;
+    background: white;
+    color: #025669;
+    border: none;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+}

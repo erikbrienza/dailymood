@@ -1,0 +1,15 @@
+/* 🔁 RESET COMPLETO */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ✅ Nessun bordo, nessuno scroll orizzontale */
+html, body, #root {
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  background-color: white;
+  font-family: 'Segoe UI', sans-serif;
+}
