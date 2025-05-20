@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import Home from './pages/Home';
 import Login from './components/Login';
@@ -8,22 +7,17 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-
-  // Verifica se l'utente è loggato al primo caricamento
-  useEffect(() => {
-    const token = localStorage.getItem('token');
-    setIsLoggedIn(!!token);
-  }, []);
+  const token = localStorage.getItem('token');
+  const isLoggedIn = !!token;
 
   const handleLoginSuccess = (token) => {
     localStorage.setItem('token', token);
-    setIsLoggedIn(true);
+    window.location.href = '/mood';
   };
 
   const handleLogout = () => {
     localStorage.removeItem('token');
-    setIsLoggedIn(false);
+    window.location.href = '/';
   };
 
   return (
@@ -40,6 +34,7 @@ function App() {
         />
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
+
       <Footer />
     </Router>
   );

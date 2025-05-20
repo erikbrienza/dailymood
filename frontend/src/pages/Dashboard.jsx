@@ -1,14 +1,25 @@
-// Dashboard.jsx (aggiunta loader)
+// Dashboard.jsx aggiornato con grafico a barre
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Header from '../components/Header';
 import './Dashboard.css';
 
+import {
+  BarChart,
+  Bar,
+  XAxis,
+  YAxis,
+  Tooltip,
+  ResponsiveContainer,
+  CartesianGrid
+} from 'recharts';
+
 function Dashboard() {
   const [selectedMood, setSelectedMood] = useState('');
   const [message, setMessage] = useState('');
   const [moods, setMoods] = useState([]);
+  const [moodStats, setMoodStats] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
   const navigate = useNavigate();
@@ -42,6 +53,20 @@ function Dashboard() {
       });
       if (res.data.success) {
         setMoods(res.data.moods);
+
+        const counts = {
+          felice: 0,
+          triste: 0,
+          neutro: 0
+        };
+        res.data.moods.forEach(m => {
+          if (counts[m.mood] !== undefined) counts[m.mood]++;
+        });
+        setMoodStats([
+          { name: 'Felice', value: counts.felice },
+          { name: 'Triste', value: counts.triste },
+          { name: 'Neutro', value: counts.neutro }
+        ]);
       }
     } catch (err) {
       console.error('Errore fetch:', err);
@@ -108,6 +133,19 @@ function Dashboard() {
             ))}
           </div>
         )}
+
+        <h3>Statistiche settimanali</h3>
+        <div style={{ width: '100%', maxWidth: 500, height: 300 }}>
+          <ResponsiveContainer>
+            <BarChart data={moodStats}>
+              <CartesianGrid strokeDasharray="3 3" />
+              <XAxis dataKey="name" />
+              <YAxis allowDecimals={false} />
+              <Tooltip />
+              <Bar dataKey="value" fill="#26a67c" radius={[4, 4, 0, 0]} />
+            </BarChart>
+          </ResponsiveContainer>
+        </div>
       </div>
     </>
   );
